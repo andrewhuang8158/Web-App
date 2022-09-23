@@ -1,0 +1,73 @@
+{% extends layout.html %}
+
+{% title %}
+
+{% endblock %}
+
+{% body %}
+<div class="profile-head">
+    <div class="cover-photo">
+    <div class="info-bar">
+        <img src="../images/pexels-riccardo-bertolo-4245826.jpg" height="50px" width="50px" alt="profile pic">
+
+        <div class="profile-info">
+            person.name
+            db.execute("COUNT friends FROM users WHERE ID = person.id")
+            for (friend in person.friends)
+            {
+                db.execute("SELECT profile-pic FROM users WHERE ID = friend.id")
+            }
+        </div>
+
+        <div class="edit-profile">
+            <button>+ Add to Story</button>
+            <button>+ Edit profile</button>
+        </div>
+    </div>
+
+    <div class="profile-bar">
+        <nav class="profile-tabs">
+            <ul>
+                <li><a href="posts.html">Posts</a></li>
+                <li><a href="about.html">about</a></li>
+                <li><a href="friends.html">friends</a></li>
+                <li><a href="photos.html">photos</a></li>
+                <li><a href="videos.html">videos</a></li>
+                <li><a href="check-ins.html">check-ins</a></li>
+                <li><select name="options">
+                    {% for option in options %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select></li>
+            </ul>
+        </nav>
+
+        <select name="extra-options">
+            {% for option in options %}
+                <option value="{{ extra-options }}">{{ extra-options }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div class="profile-body">
+    <div class="intro">
+        <div class="bio"></div>
+        <div class="details"></div>
+        <div class="hobbies"></div>
+        <div class="featured"></div>
+    </div>
+
+    <div class="posts">
+        <div class="profile-post">
+            <div class="new-post"> </div>
+        </div>
+
+        <div class="all-posts">
+            {% for post in posts %}
+                {{ post }}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
